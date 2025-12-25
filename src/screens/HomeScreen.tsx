@@ -15,14 +15,14 @@ const HomeScreen = () => {
 
   const character = activeCharacter || currentCharacter;
 
-  const menuItems = [
-    { title: 'Characters', icon: '👥', screen: 'Characters' as const },
-    { title: 'Assets', icon: '📦', screen: 'Assets' as const },
-    { title: 'Market Orders', icon: '💰', screen: 'MarketOrders' as const },
-    { title: 'Star Map', icon: '🗺️', screen: 'Map' as const },
-    { title: 'Route Planner', icon: '🛣️', screen: 'RouteMap' as const },
-    { title: 'Ship Fittings', icon: '🚀', screen: 'Fittings' as const },
-    { title: 'AI Assistant', icon: '🤖', screen: 'AIAssistant' as const },
+  const menuItems: Array<{ title: string; icon: string; screen: keyof RootStackParamList }> = [
+    { title: 'Characters', icon: '👥', screen: 'Characters' },
+    { title: 'Assets', icon: '📦', screen: 'Assets' },
+    { title: 'Market Orders', icon: '💰', screen: 'MarketOrders' },
+    { title: 'Star Map', icon: '🗺️', screen: 'Map' },
+    { title: 'Route Planner', icon: '🛣️', screen: 'RouteMap' },
+    { title: 'Ship Fittings', icon: '🚀', screen: 'Fittings' },
+    { title: 'AI Assistant', icon: '🤖', screen: 'AIAssistant' },
   ];
 
   return (
@@ -43,7 +43,7 @@ const HomeScreen = () => {
             <TouchableOpacity
               key={index}
               style={styles.menuItem}
-              onPress={() => navigation.navigate(item.screen)}
+              onPress={() => navigation.navigate(item.screen as any)}
             >
               <Text style={styles.menuIcon}>{item.icon}</Text>
               <Text style={styles.menuTitle}>{item.title}</Text>
